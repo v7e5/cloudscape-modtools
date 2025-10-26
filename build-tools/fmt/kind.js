@@ -1,0 +1,37 @@
+const {tsx} = require('@ast-grep/napi')
+
+module.exports = Object.fromEntries(
+  [
+    'arrow_function',
+    'call_expression',
+    'comment',
+    'enum_assignment',
+    'ERROR',
+    'export_specifier',
+    'export_statement',
+    'function_declaration',
+    'function_expression',
+    'identifier',
+    'import_clause',
+    'import_specifier',
+    'import_statement',
+    'jsx_attribute',
+    'jsx_element',
+    'jsx_fragment',
+    'jsx_self_closing_element',
+    'lexical_declaration',
+    'named_imports',
+    'object_assignment_pattern',
+    'pair',
+    'parenthesized_expression',
+    'property_identifier',
+    'return_statement',
+    'shorthand_property_identifier',
+    'shorthand_property_identifier_pattern',
+    'spread_element',
+    'statement_block',
+    'string_fragment',
+    'this',
+    'variable_declarator',
+  ].map(e => [e, tsx.kind(e)])
+)

@@ -1,0 +1,13 @@
+{
+  "private": true,
+  "sideEffects": false,
+  "version": "3.0.0",
+  "devDependencies": {
+    "@ast-grep/napi": "^0.22.5",
+    "@cloudscape-design/theming-build": "^1.0.56",
+    "immer": "^10.1.1",
+    "loader-utils": "^3.2.2",
+    "lodash": "^4.17.21",
+    "svgo": "^3.3.2"
+  }
+}

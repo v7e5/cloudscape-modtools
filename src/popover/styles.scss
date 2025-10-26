@@ -1,0 +1,55 @@
+/*
+ Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ SPDX-License-Identifier: Apache-2.0
+*/
+
+@use '../internal/styles' as styles;
+@use '../internal/styles/tokens' as awsui;
+@use '../internal/hooks/focus-visible' as focus-visible;
+
+@import './arrow';
+@import './body';
+@import './container';
+@import './motion';
+
+.root {
+  @include styles.styles-reset;
+  color: inherit;
+}
+
+.trigger {
+  display: inline-block;
+  max-inline-size: 100%;
+  color: inherit;
+  text-align: inherit;
+}
+
+.overflow-ellipsis {
+  @include styles.text-overflow-ellipsis;
+  @include styles.text-wrapping;
+}
+
+.trigger-type-text {
+  border-block: 0;
+  border-inline: 0;
+  margin-block: 0;
+  margin-inline: 0;
+  padding-block: 0;
+  padding-inline: 0;
+  background-color: transparent;
+
+  cursor: pointer;
+  border-block-end: awsui.$border-divider-list-width dashed currentColor;
+
+  &:focus {
+    outline: none;
+  }
+
+  @include focus-visible.when-visible {
+    @include styles.focus-highlight(1px);
+  }
+}
+
+.popover-inline-content {
+  display: inline;
+}

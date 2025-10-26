@@ -1,0 +1,26 @@
+/*
+ Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ SPDX-License-Identifier: Apache-2.0
+*/
+@use '../../internal/styles/tokens' as awsui;
+
+.css-grid {
+  display: grid;
+  gap: awsui.$space-grid-gutter;
+
+  &.grid-no-gutters {
+    gap: 0;
+  }
+
+  &.grid-variant-text-grid {
+    > .item {
+      border-inline-start: awsui.$border-divider-section-width solid awsui.$color-border-divider-default;
+      padding-inline: awsui.$space-grid-gutter;
+
+      &.first-column {
+        border-inline-start: 0;
+        padding-inline-start: 0;
+      }
+    }
+  }
+}

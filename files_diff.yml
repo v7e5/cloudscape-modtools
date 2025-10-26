@@ -1,0 +1,40 @@
+- A: added
+- B: broken pairing
+- C: copied
+- D: deleted
+- M: modified
+- R: renamed
+- T: type change
+- U: unmerged
+- X: unknown
+
+A src/container/__integ__/header-cover.test.ts
+D src/internal/context/app-layout-context.ts
+M pages/popover/text-wrap.page.tsx
+M src/app-layout/__integ__/app-layout-sticky-elements.test.ts
+M src/app-layout/__tests__/sticky-offset.test.ts
+M src/app-layout/utils/sticky-offsets.ts
+M src/app-layout/visual-refresh/background.scss
+M src/app-layout/visual-refresh/background.tsx
+M src/app-layout/visual-refresh/breadcrumbs.scss
+M src/app-layout/visual-refresh/breadcrumbs.tsx
+M src/app-layout/visual-refresh/context.tsx
+M src/app-layout/visual-refresh/layout.scss
+M src/app-layout/visual-refresh/layout.tsx
+M src/app-layout/visual-refresh/main.tsx
+M src/app-layout/visual-refresh/notifications.scss
+M src/app-layout/visual-refresh/notifications.tsx
+M src/app-layout/visual-refresh/use-background-overlap.tsx
+M src/container/__integ__/awsui-legacy-applayout-sticky.test.ts
+M src/container/internal.tsx
+M src/container/styles.scss
+M src/container/__tests__/sticky-header.test.tsx
+M src/container/__tests__/sticky-offset.test.ts
+M src/container/use-sticky-header.ts
+M src/internal/context/reset-contexts-for-modal.tsx
+M src/popover/index.tsx
+M src/popover/interfaces.ts
+M src/popover/internal.tsx
+M src/popover/styles.scss
+M src/table/internal.tsx
+M src/__tests__/__snapshots__/documenter.test.ts.snap

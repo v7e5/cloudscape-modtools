@@ -1,0 +1,104 @@
+/*
+ Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ SPDX-License-Identifier: Apache-2.0
+*/
+
+@use '../internal/styles' as styles;
+@use '../internal/styles/tokens' as awsui;
+@use '../internal/hooks/focus-visible' as focus-visible;
+@use './constants' as constants;
+
+.root {
+  @include styles.styles-reset;
+
+  &.has-items:not(.no-padding) {
+    padding-block-start: awsui.$space-xs;
+  }
+}
+
+.dismiss-button {
+  margin-block-start: -1px;
+  margin-block-end: 0;
+  margin-inline-start: awsui.$space-xxs;
+  margin-inline-end: -1px;
+  border-block: 1px solid transparent;
+  border-inline: 1px solid transparent;
+  padding-block: 0;
+  padding-inline: awsui.$space-xxs;
+  color: awsui.$color-text-button-inline-icon-default;
+  background-color: transparent;
+
+  @include focus-visible.when-visible {
+    @include styles.focus-highlight(0px);
+  }
+
+  &:focus {
+    outline: none;
+    text-decoration: none;
+  }
+
+  &:hover {
+    cursor: pointer;
+    color: awsui.$color-text-button-inline-icon-hover;
+  }
+}
+
+.token {
+  block-size: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: awsui.$space-xxs;
+}
+
+.token-box {
+  block-size: 100%;
+  border-block: awsui.$border-field-width solid constants.$token-border-color;
+  border-inline: awsui.$border-field-width solid constants.$token-border-color;
+  padding-block-start: styles.$control-padding-vertical;
+  padding-block-end: styles.$control-padding-vertical;
+  padding-inline-start: styles.$control-padding-horizontal;
+  padding-inline-end: awsui.$space-xxs;
+  display: flex;
+  align-items: flex-start;
+  background: constants.$token-background;
+  border-start-start-radius: awsui.$border-radius-token;
+  border-start-end-radius: awsui.$border-radius-token;
+  border-end-start-radius: awsui.$border-radius-token;
+  border-end-end-radius: awsui.$border-radius-token;
+  color: awsui.$color-text-body-default;
+  box-sizing: border-box;
+}
+@mixin token-box-validation {
+  border-inline-start-width: awsui.$border-invalid-width;
+
+  > .dismiss-button {
+    color: awsui.$color-text-interactive-default;
+    &:hover {
+      color: awsui.$color-text-interactive-hover;
+    }
+  }
+}
+.token-box-error {
+  border-color: awsui.$color-border-status-error;
+  @include token-box-validation;
+}
+.token-box-warning {
+  border-color: awsui.$color-border-status-warning;
+  @include token-box-validation;
+}
+.token-box-disabled.token-box-disabled {
+  border-color: awsui.$color-border-control-disabled;
+  background-color: awsui.$color-background-container-content;
+  color: awsui.$color-text-disabled;
+  pointer-events: none;
+
+  > .dismiss-button {
+    color: awsui.$color-text-button-inline-icon-disabled;
+
+    &:hover {
+      /* stylelint-disable-next-line plugin/no-unsupported-browser-features */
+      cursor: initial;
+      color: awsui.$color-text-button-inline-icon-disabled;
+    }
+  }
+}

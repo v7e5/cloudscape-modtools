@@ -1,0 +1,146 @@
+/*
+ Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ SPDX-License-Identifier: Apache-2.0
+*/
+
+@use '../internal/styles' as styles;
+@use '../internal/styles/tokens' as awsui;
+
+.container {
+  display: inline-block;
+  position: fixed;
+  inset-block-start: -9999px;
+  inset-inline-start: -9999px;
+  z-index: 2000;
+}
+
+.container-body {
+  @include styles.styles-reset;
+  border-start-start-radius: awsui.$border-radius-popover;
+  border-start-end-radius: awsui.$border-radius-popover;
+  border-end-start-radius: awsui.$border-radius-popover;
+  border-end-end-radius: awsui.$border-radius-popover;
+  background-color: awsui.$color-background-popover;
+  box-shadow: awsui.$shadow-popover;
+  border-block: awsui.$border-field-width solid awsui.$color-border-popover;
+  border-inline: awsui.$border-field-width solid awsui.$color-border-popover;
+}
+
+.container-body-variant-annotation {
+  background-color: awsui.$color-background-status-info;
+  border-color: awsui.$color-border-status-info;
+}
+
+.container-body-size-small {
+  max-inline-size: 210px;
+  &.fixed-width {
+    inline-size: 210px;
+  }
+}
+
+.container-body-size-medium {
+  max-inline-size: 310px;
+  &.fixed-width {
+    inline-size: 310px;
+  }
+}
+
+.container-body-size-large {
+  max-inline-size: 480px;
+  @media (max-width: 480px) {
+    // On viewports smaller than 480px, we default to the body-size-medium width
+    max-inline-size: 310px;
+  }
+  &.fixed-width {
+    inline-size: 480px;
+  }
+}
+
+.container-arrow {
+  $arrow-offset: 12px;
+  $arrow-width: 20px;
+  $arrow-height: $arrow-width * 0.5;
+
+  position: absolute;
+  display: inline-block;
+
+  &-position-right-top,
+  &-position-right-bottom {
+    transform: rotate(-90deg);
+    transform-origin: 0 100%;
+
+    @include styles.with-direction('rtl') {
+      transform: rotate(90deg);
+      transform-origin: 100% 100%;
+    }
+  }
+
+  &-position-right-top {
+    inset-block-start: calc(#{$arrow-offset} + #{$arrow-height});
+    inset-inline-start: 0;
+  }
+
+  &-position-right-bottom {
+    inset-block-end: $arrow-offset;
+    inset-inline-start: 0;
+  }
+
+  &-position-left-top,
+  &-position-left-bottom {
+    transform: rotate(90deg);
+    transform-origin: 100% 100%;
+
+    @include styles.with-direction('rtl') {
+      transform: rotate(-90deg);
+      transform-origin: 0% 100%;
+    }
+  }
+
+  &-position-left-top {
+    inset-block-start: calc(#{$arrow-offset} + #{$arrow-height});
+    inset-inline-end: 0;
+  }
+
+  &-position-left-bottom {
+    inset-block-end: $arrow-offset;
+    inset-inline-end: 0;
+  }
+
+  &-position-top-center,
+  &-position-top-right,
+  &-position-top-left,
+  &-position-top-responsive {
+    transform: rotate(180deg);
+    transform-origin: 50% 50%;
+  }
+
+  &-position-top-center {
+    inset-block-end: -$arrow-width * 0.5;
+    inset-inline-start: calc(50% - #{$arrow-height});
+  }
+
+  &-position-top-right {
+    inset-block-end: -$arrow-width * 0.5;
+    inset-inline-start: $arrow-offset;
+  }
+
+  &-position-top-left {
+    inset-block-end: -$arrow-width * 0.5;
+    inset-inline-start: calc(100% - #{$arrow-width} - #{$arrow-offset});
+  }
+
+  &-position-bottom-center {
+    inset-block-start: -$arrow-width * 0.5;
+    inset-inline-start: calc(50% - #{$arrow-height});
+  }
+
+  &-position-bottom-right {
+    inset-block-start: -$arrow-width * 0.5;
+    inset-inline-start: $arrow-offset;
+  }
+
+  &-position-bottom-left {
+    inset-block-start: -$arrow-width * 0.5;
+    inset-inline-start: calc(100% - #{$arrow-width} - #{$arrow-offset});
+  }
+}

@@ -1,0 +1,23 @@
+/*
+ Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ SPDX-License-Identifier: Apache-2.0
+*/
+
+@use '../../styles' as styles;
+@use '../../styles/tokens' as awsui;
+
+.root {
+  @include styles.styles-reset;
+  position: absolute;
+}
+.hover-area {
+  pointer-events: none;
+  padding-block: awsui.$space-static-s;
+  padding-inline: awsui.$space-static-s;
+  margin-block: calc(-1 * #{awsui.$space-static-s});
+  margin-inline: calc(-1 * #{awsui.$space-static-s});
+}
+
+.popover-body {
+  pointer-events: auto;
+}

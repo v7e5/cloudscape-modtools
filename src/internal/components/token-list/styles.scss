@@ -1,0 +1,99 @@
+/*
+ Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ SPDX-License-Identifier: Apache-2.0
+*/
+
+@use '../../styles/tokens' as awsui;
+@use '../../styles' as styles;
+@use '../../hooks/focus-visible' as focus-visible;
+
+.root {
+  display: flex;
+  flex-wrap: wrap;
+  gap: awsui.$space-scaled-xs;
+
+  &.horizontal {
+    gap: awsui.$space-xs;
+    flex-direction: row;
+  }
+  &.vertical {
+    flex-direction: column;
+  }
+}
+
+.list {
+  display: contents;
+  list-style: none;
+  padding-block: 0;
+  padding-inline: 0;
+  margin-block: 0;
+  margin-inline: 0;
+
+  &.horizontal,
+  &.vertical {
+    display: flex;
+    flex-wrap: wrap;
+    gap: awsui.$space-xs;
+  }
+  &.horizontal {
+    flex-direction: row;
+  }
+  &.vertical {
+    flex-direction: column;
+  }
+}
+
+.list-item {
+  // To override v2.1 list styling
+  padding-block: 0;
+  padding-inline: 0;
+  margin-block: 0;
+  margin-inline: 0;
+}
+
+.toggle-container-inline {
+  padding-inline-start: awsui.$space-xs;
+  display: flex;
+  align-items: center;
+}
+
+.toggle {
+  @include styles.styles-reset;
+  @include styles.link-default('body-m');
+
+  display: flex;
+  align-items: center;
+  background-color: transparent;
+  border-block: styles.$control-border-width solid transparent;
+  border-inline: styles.$control-border-width solid transparent;
+
+  padding-block: 0;
+  padding-inline: 0;
+
+  // Icon svg has one pixel around it. We need to shift the button one
+  // pixel to the left to vertically align it with the input field
+  margin-inline-start: -1px;
+
+  &:active,
+  &:focus,
+  &:hover {
+    text-decoration: none;
+    /* stylelint-disable-next-line plugin/no-unsupported-browser-features */
+    text-decoration-color: transparent;
+  }
+
+  @include focus-visible.when-visible {
+    @include styles.focus-element-without-border(awsui.$border-radius-control-default-focus-ring);
+  }
+
+  > .description {
+    margin-inline-start: awsui.$space-xxs;
+  }
+}
+
+.separator {
+  margin-block: 0;
+  margin-inline: awsui.$space-scaled-m;
+  inline-size: awsui.$border-divider-section-width;
+  background-color: awsui.$color-border-divider-default;
+}

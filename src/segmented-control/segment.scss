@@ -1,0 +1,123 @@
+/*
+ Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ SPDX-License-Identifier: Apache-2.0
+*/
+
+@use 'sass:map';
+@use '../internal/styles/tokens' as awsui;
+@use '../internal/styles' as styles;
+@use '../button/constants' as constants;
+@use '../internal/hooks/focus-visible' as focus-visible;
+
+$segment-properties: (
+  'default-background': awsui.$color-background-segment-default,
+  'default-color': awsui.$color-text-segment-default,
+  'hover-background': awsui.$color-background-segment-hover,
+  'hover-color': awsui.$color-text-segment-hover,
+  'active-background': awsui.$color-background-segment-active,
+  'disabled-background': awsui.$color-background-segment-disabled,
+  'disabled-border-color': awsui.$color-border-segment-disabled,
+  'disabled-color': awsui.$color-text-interactive-disabled,
+);
+
+$default-background: map.get($segment-properties, 'default-background');
+$default-color: map.get($segment-properties, 'default-color');
+$default-border-color: awsui.$color-border-segment-default;
+$hover-background: map.get($segment-properties, 'hover-background');
+$hover-border-color: awsui.$color-border-segment-hover;
+$hover-color: map.get($segment-properties, 'hover-color');
+$disabled-background: map.get($segment-properties, 'disabled-background');
+$disabled-border-color: map.get($segment-properties, 'disabled-border-color');
+$disabled-color: map.get($segment-properties, 'disabled-color');
+$selected-background: map.get($segment-properties, 'active-background');
+$selected-border-color: awsui.$color-border-segment-active;
+$selected-color: awsui.$color-text-segment-active;
+
+.segment {
+  @include styles.font-body-m;
+  @include styles.text-flex-wrapping;
+  @include styles.font-button;
+  letter-spacing: 0.25px;
+  border-block: styles.$control-border-width solid $default-border-color;
+  border-inline: styles.$control-border-width solid $default-border-color;
+  padding-block: styles.$control-padding-vertical;
+  padding-inline: awsui.$space-button-horizontal;
+  border-inline-end-width: 0;
+  background: $default-background;
+  color: $default-color;
+  overflow: visible;
+  &:focus {
+    outline: none;
+  }
+  @for $i from 1 through 6 {
+    &:nth-child(#{$i}) {
+      grid-column: $i;
+      -ms-grid-column: $i;
+    }
+  }
+  @include focus-visible.when-visible {
+    @include styles.focus-highlight(awsui.$space-segmented-control-focus-outline-gutter);
+  }
+  &:last-child {
+    border-inline-end-width: styles.$control-border-width;
+    border-start-start-radius: 0;
+    border-start-end-radius: awsui.$border-radius-button;
+    border-end-start-radius: 0;
+    border-end-end-radius: awsui.$border-radius-button;
+  }
+  &:first-child {
+    border-start-start-radius: awsui.$border-radius-button;
+    border-start-end-radius: 0;
+    border-end-start-radius: awsui.$border-radius-button;
+    border-end-end-radius: 0;
+  }
+
+  &.disabled {
+    background: $disabled-background;
+    border-color: $disabled-border-color;
+    color: $disabled-color;
+  }
+
+  &:not(.disabled) + .segment.disabled {
+    border-inline-start-color: $default-border-color;
+  }
+
+  &.selected {
+    background: $selected-background;
+    border-color: $selected-border-color;
+    color: $selected-color;
+    & + .segment,
+    & + .segment.disabled {
+      border-inline-start-color: $selected-border-color;
+    }
+  }
+
+  &:hover:not(.selected):not(.disabled):not(:focus) {
+    background: $hover-background;
+    color: $hover-color;
+    border-color: $hover-border-color;
+    cursor: pointer;
+    & + .segment:not(.selected) {
+      border-inline-start-color: $hover-border-color;
+    }
+  }
+
+  &.selected + .segment:hover:not(.selected):not(.disabled):not(:focus) {
+    border-inline-start-color: $selected-border-color;
+  }
+}
+
+.icon {
+  /* used in test-utils */
+}
+
+.with-text {
+  position: relative;
+  inset-inline-start: calc(-1 * #{awsui.$space-xxs});
+  margin-inline-end: awsui.$space-xxs;
+}
+
+.with-no-text {
+  margin-inline: auto;
+  inset-inline: 0;
+}

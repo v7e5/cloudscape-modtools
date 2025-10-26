@@ -1,0 +1,16 @@
+// Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+// SPDX-License-Identifier: Apache-2.0
+import React from 'react';
+
+import useBaseComponent from '../internal/hooks/use-base-component';
+
+import { InternalDrawer } from './internal';
+
+export { DrawerProps };
+
+export default function Drawer(props: DrawerProps) {
+  const internalProps = useBaseComponent('Drawer');
+  return <InternalDrawer {...internalProps} {...props} />;
+}
+
+

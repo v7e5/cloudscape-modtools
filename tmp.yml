@@ -1,0 +1,62 @@
+| rg -i funnel                                                                                                                                                                                                        ~/dev/aws/cloudcomp/src
+expandable-section/expandable-section-container.tsx
+31:      <AnalyticsFunnelSubStep>
+44:      </AnalyticsFunnelSubStep>
+
+modal/internal.tsx
+122:    <FunnelNameSelectorContext.Provider value={`.${styles['header--text']}`}>
+188:    </FunnelNameSelectorContext.Provider>
+
+cards/index.tsx
+144:      <AnalyticsFunnelSubStep>
+208:      </AnalyticsFunnelSubStep>
+
+container/internal.tsx
+39:  __funnelSubStepProps?: ReturnType<typeof useFunnelSubStep>['funnelSubStepProps'];
+40:  __subStepRef?: ReturnType<typeof useFunnelSubStep>['subStepRef'];
+75:  __funnelSubStepProps,
+128:      {...__funnelSubStepProps}
+
+button/internal.tsx
+129:      [DATA_ATTR_FUNNEL_VALUE]: uniqueId,
+
+container/index.tsx
+26:    <AnalyticsFunnelSubStep>
+36:    </AnalyticsFunnelSubStep>
+
+form/index.tsx
+24:      funnelNextOrSubmitAttempt();
+25:      funnelSubmit();
+39:  const funnelNameSelector = inheritedFunnelNameSelector || `.${headerStyles['heading-text']}`;
+42:    <AnalyticsFunnel
+43:      funnelType="single-page"
+45:      totalFunnelSteps={1}
+46:      funnelNameSelectors={[funnelNameSelector, `.${formStyles.header}`]}
+48:      <AnalyticsFunnelStep stepNumber={1}>
+50:      </AnalyticsFunnelStep>
+51:    </AnalyticsFunnel>
+
+link/internal.tsx
+118:      [DATA_ATTR_FUNNEL_VALUE]: uniqueId,
+
+header/internal.tsx
+72:              {...(HeadingTag === 'h2' ? { [DATA_ATTR_FUNNEL_KEY]: FUNNEL_KEY_SUBSTEP_NAME } : {})}
+
+table/internal.tsx
+58:    __funnelSubStepProps?: InternalContainerProps['__funnelSubStepProps'];
+117:      __funnelSubStepProps,
+282:            __funnelSubStepProps={__funnelSubStepProps}
+
+breadcrumb-group/item/item.tsx
+22:  funnelAttributes: Record<string, string>;
+29:  funnelAttributes,
+104:        <span {...funnelAttributes} className={styles.text} ref={textRef}>
+153:  const funnelAttributes: Record<string, string> = {};
+155:    funnelAttributes[DATA_ATTR_FUNNEL_KEY] = FUNNEL_KEY_FUNNEL_NAME;
+165:          funnelAttributes={funnelAttributes}
+170:          <span {...funnelAttributes} className={styles.text}>
+
+table/index.tsx
+44:      <AnalyticsFunnelSubStep>
+46:      </AnalyticsFunnelSubStep>
+|                                                                                                                                                                                                                     ~/dev/aws/cloudcomp/src
