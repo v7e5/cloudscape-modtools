@@ -2,7 +2,7 @@
 
 A set of tools and scripts to automate the process of transforming [AWS UI
 Cloudscape Components](https://cloudscape.design) to Remix compatible UI
-components.  
+components.
 
 This project makes heavy use of [ast-grep](https://ast-grep.github.io/) for all
 kinds of code transformations, along with ZSH shell scripts and nodejs tools.
